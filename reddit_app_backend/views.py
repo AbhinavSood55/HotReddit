@@ -12,8 +12,8 @@ class reddit_views(views.APIView):
     
     def post(self, request, format=None):
         reddit = praw.Reddit(
-            client_id= #Client ID goes here
-            client_secret= #Client Secret goes here
+            client_id= "2VoNNO8E4tfbrg",
+            client_secret="z1fkyTK7AjNOupKGq3dQ4jpE2CNOZQ",
             user_agent="my user agent"
         )
         
