@@ -1,0 +1,28 @@
+.listView-right {
+    position: absolute;
+    left: 0%;
+    transition: .5s;
+}
+
+.listView-left {
+    position: absolute;
+    left: -350%;
+    transition: .5s;
+}
+
+.detailView-right {
+    position: absolute;
+    left: 100%;
+    transition: .5s;
+}
+
+.detailView-left {
+    position: absolute;
+    left: 0%;
+    transition: .5s;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+}
