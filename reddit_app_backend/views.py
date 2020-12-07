@@ -7,8 +7,6 @@ import json
 # Create your views here.
 class reddit_views(views.APIView):
     serializer_class = GetSubRedSerializer
-    # permission_classes = (permissions.AllowAny,)
-    # http_method_names = ['get', 'head']
     
     def post(self, request, format=None):
         reddit = praw.Reddit(
@@ -34,9 +32,8 @@ class reddit_views(views.APIView):
                     "media_only":sub.media_only,
                     "selftext":sub.selftext,
                     "selftext_html":sub.selftext_html,
-                    # "media_embed":sub.media_embed,
                 } 
-                for sub in hot_sub
+                for sub in hot_sub  #fetching reddit lists
             ]
 
             results = RedditSerializer(sub_dict, many=True).data

@@ -12,7 +12,8 @@ import css from '../css/app.css';
 const App = () => {  
     
     return (
-        <Router>
+        //Creating router
+        <Router>    
             <Switch>
                 <Route path='/' component={Home} exact/>
                 <Route path='/redditlist' component={RedditList}/>

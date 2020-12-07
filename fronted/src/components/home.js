@@ -15,8 +15,8 @@ import { update, updateSubList } from "../actions"
 
 const Home = () => {
 
-    const defsearchInp = useSelector(state => state.formData.searchInput)
-    const subList = useSelector(state => state.subList)
+    const defsearchInp = useSelector(state => state.formData.searchInput)   //Read the global state to bind the input field data
+    const subList = useSelector(state => state.subList)  //Reading Subreddit list from the global state
     const dispatch = useDispatch();
 
     const history = useHistory()
@@ -24,12 +24,14 @@ const Home = () => {
     const[ bStatus, setBStatus ] = useState(false)
     const[ searchSub, setSearchSub ] = useState(defsearchInp)
 
+    //Update Subreddit list to the state
     const updateSubs = (data, subList) => {
         debugger
-        dispatch(updateSubList(data))
+        dispatch(updateSubList(data))       //Updating the global state
     }
     
 
+    //Requesting Django Rest Framework back-end for the list of Subreddits
     const getList = () => {
         
         setShowLoader(prevShowLoader => !prevShowLoader)
@@ -67,16 +69,6 @@ const Home = () => {
                         }
                     }
                 );
-            // .then(data => {
-            //     updateSubs(data)
-            // })
-            // .then( () => {
-            // setShowLoader(prevShowLoader => !prevShowLoader)
-            // setBStatus(prevBStatus => !prevBStatus)
-            // history.push({
-            //     pathname:"/redditlist",
-            // })
-            // });
         } else {
             alert('Pass a Subredit to view the list')
             setShowLoader(prevShowLoader => !prevShowLoader)
@@ -103,7 +95,6 @@ const Home = () => {
                         id="my-input" 
                         aria-describedby="my-helper-text" 
                         value={searchSub}
-                        // onChange={(e) => {setSearchSub(e.target.value)}} />
                         onChange={(e) => {
                             dispatch(update({searchInput:e.target.value}))
                             setSearchSub(e.target.value)
