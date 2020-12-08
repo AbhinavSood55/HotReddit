@@ -26,7 +26,6 @@ const Home = () => {
 
     //Update Subreddit list to the state
     const updateSubs = (data, subList) => {
-        debugger
         dispatch(updateSubList(data))       //Updating the global state
     }
     

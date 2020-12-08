@@ -18,7 +18,6 @@ import styled from 'styled-components';
 const useStyles = makeStyles({
     root: {
       maxWidth: 700,
-    //   minWidth: 300,
       backgroundColor: blueGrey,
     },
     title: {
@@ -59,15 +58,22 @@ const RedditList = (props) => {
                 m={2}
                 p={2}
                 style={{
-                    overflow: "hidden",
+                    overflowX: "hidden",
+                    overflowY: "auto",
                     position: "relative",
                     width: "70%",
+                    height: "100%",
                 }}
                 >
                 <List className= {'listView-' + (listDisplay ? 'right': 'left')} width="90%">
                     {content}
                 </List>
-                <DetailSlide className = {'detailView-' + (listDisplay ? 'right': 'left')}>
+                <DetailSlide 
+                    style={{
+                        width: "100%",
+                    }}
+                    className = {'detailView-' + (listDisplay ? 'right': 'left')}
+                    >
                     <SubDetail 
                         setListDisplay={handleDispChange} 
                         setSubDetail={setSubDetail}
@@ -90,9 +96,15 @@ const ContentComponent = (props) => {
     const history = useHistory();
 
     return(
-        <> 
-            <Card className={classes.root} variant='outlined'>
-                <CardContent style={{backgroundColor: "darkgrey"}} id={item.id}>
+        <div> 
+            <Card
+                className={classes.root} 
+                variant='outlined'>
+                <CardContent 
+                    style={{
+                        backgroundColor: "darkgrey",
+                        }} 
+                    id={item.id}>
                     <Button 
                         value={JSON.stringify(item)}
                         id={item.id}
@@ -115,7 +127,7 @@ const ContentComponent = (props) => {
                     </Button>
                 </CardContent>
             </Card>
-        </>
+        </div>
     );
 }
 
@@ -134,7 +146,7 @@ const Button = styled.button`
     height: 100%;
     color: #b2fdfd;
     border-radius: 3px;
-    font-size: x-large;
+    font-size: large;
     outline:none;
     &:hover {
         box-shadow: 0 10px 10px rgba(17, 16, 62, 0.15);
@@ -173,23 +185,17 @@ const SubDetail = (props) => {
                 variant="outlined" raised="true">
                 <CardHeader
                     title={props.subDetail.title}> 
-                    {/* <Typography>
-                        <h2>
-                            {props.subDetail.title}
-                        </h2>
-                    </Typography> */}
                 </CardHeader>
-                <CardContent >
-                    <Typography
-                        variant="body2">
-                        <p>{props.subDetail.selftext}</p>
+                <CardContent 
+                    style={{
+                        overflowX: "scroll",
+                    }}
+                >
+                    <Typography>
+                        <p>
+                        {props.subDetail.selftext}</p>
                     </Typography>
                 </CardContent>
-                {/* `if (props.subDetail.media !== null) {
-                    <CardMedia>
-                        {props.subDetail.media}
-                    </CardMedia>  
-                }` */}
             </Card>
         </>
     );
