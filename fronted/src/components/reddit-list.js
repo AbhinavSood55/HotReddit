@@ -188,7 +188,7 @@ const SubDetail = (props) => {
                 </CardHeader>
                 <CardContent 
                     style={{
-                        overflowX: "scroll",
+                        overflowX: "auto",
                     }}
                 >
                     <Typography>
